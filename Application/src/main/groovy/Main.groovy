@@ -17,7 +17,11 @@ class Main {
         def guitarStringsPanel = new GuitarStringsPanel()
         panel.add guitarStringsPanel, BorderLayout.NORTH
         def filterPanel = new FilterPanel(guitarStringsPanel)
-        panel.add filterPanel, BorderLayout.CENTER
+        def displayPanel = new DisplayPanel(guitarStringsPanel)
+        JPanel center = new JPanel()
+        center.add filterPanel
+        center.add displayPanel
+        panel.add center, BorderLayout.CENTER
         panel
     }
 }

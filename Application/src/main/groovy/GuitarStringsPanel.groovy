@@ -20,7 +20,7 @@ class GuitarStringsPanel extends JPanel {
         add scrollPane
     }
 
-    void setFilter(Predicate<ScaledNote> filter){
+    void setFilter(Predicate<Note> filter){
         dataModel.setFilter filter
     }
 
