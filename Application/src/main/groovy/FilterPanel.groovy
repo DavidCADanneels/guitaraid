@@ -12,7 +12,7 @@ import java.util.function.Predicate
 
 class FilterPanel extends JPanel implements ActionListener{
     GuitarStringsPanel guitarStringsPanel
-    JRadioButton all, full, selection
+    JRadioButton all, full, selectedNotes, selectedScaledNotes
     HashMap<Note, JCheckBox> notesCheckBoxes = new HashMap<>()
     HashMap<ScaledNote, JCheckBox> scaledNoteCheckBoxes = new HashMap<>()
 
@@ -25,18 +25,27 @@ class FilterPanel extends JPanel implements ActionListener{
         optionsPanel.setBorder(new TitledBorder('Selection:'))
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS))
         ButtonGroup group = new ButtonGroup()
+
         all = new JRadioButton('All notes')
         full = new JRadioButton('Full notes only')
-        selection = new JRadioButton('Selected notes:')
+        selectedNotes = new JRadioButton('Selected notes')
+        selectedScaledNotes = new JRadioButton('Selected Scaled Notes')
+
         group.add all
         group.add full
-        group.add selection
+        group.add selectedNotes
+        group.add selectedScaledNotes
+
         optionsPanel.add all
         optionsPanel.add full
-        optionsPanel.add selection
+        optionsPanel.add selectedNotes
+        optionsPanel.add selectedScaledNotes
+
         all.addActionListener this
         full.addActionListener this
-        selection.addActionListener this
+        selectedNotes.addActionListener this
+        selectedScaledNotes.addActionListener this
+
         all.setSelected true
         add optionsPanel, BorderLayout.WEST
 
@@ -56,14 +65,18 @@ class FilterPanel extends JPanel implements ActionListener{
             }
         }
 
-        JPanel selectedScaledNotes = new JPanel(new GridLayout(0, 6))
+        JPanel selectedScaledNotes = new JPanel(new GridLayout(0, 7))
         selectedScaledNotes.setBorder(new TitledBorder('Displayed Scaled Notes:'))
         [
-                null, 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
-                'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3',
-                'C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4',
-                'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5', 'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5',
-                'C6', 'C#6', 'D6'
+                null, null, 'E2', 'F2','G2', 'A2', 'B2',
+                null, null, null, 'F#2', 'G#2', 'A#2', null,
+                'C3', 'D3', 'E3', 'F3','G3', 'A3', 'B3',
+                'C#3', 'D#3', null, 'F#3', 'G#3', 'A#3', null,
+                'C4', 'D4', 'E4', 'F4','G4', 'A4', 'B4',
+                'C#4', 'D#4', null, 'F#4', 'G#4', 'A#4', null,
+                'C5', 'D5', 'E5', 'F5','G5', 'A5', 'B5',
+                'C#5', 'D#5', null, 'F#5', 'G#5', 'A#5', null,
+                'C6', 'C#6', 'D6', null, null, null, null
         ].each { String name ->
             if(name == null){
                 selectedScaledNotes.add new JPanel()
@@ -108,17 +121,34 @@ class FilterPanel extends JPanel implements ActionListener{
                 checkBox.enabled = false
                 checkBox.selected = true
             }
+            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
+                checkbox.enabled = false
+                checkbox.selected = true
+            }
             guitarStringsPanel.filter = null
         } else if (e.source == full) {
             notesCheckBoxes.each { Note note, JCheckBox checkBox ->
                 checkBox.enabled = false
-                checkBox.selected = fullScaledTone.test(note as Note)
+                checkBox.selected = fullScaledTone.test(note)
+            }
+            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
+                checkbox.enabled = false
+                checkbox.selected = fullScaledTone.test(scaledNote.note)
             }
             guitarStringsPanel.filter = fullScaledTone
-        } else if (e.source == selection) {
+        } else if (e.source == selectedNotes) {
             notesCheckBoxes.each { Note note, JCheckBox checkBox ->
                 checkBox.enabled = true
-//                checkBox.selected = true
+            }
+            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+                checkBox.enabled = false
+            }
+        } else if (e.source == selectedScaledNotes){
+            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+                checkBox.enabled = true
+            }
+            notesCheckBoxes.each { Note note, JCheckBox checkBox ->
+                checkBox.enabled = false
             }
         } else {
             ArrayList<Note> notes = new ArrayList<>()

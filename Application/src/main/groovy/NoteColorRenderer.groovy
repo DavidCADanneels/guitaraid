@@ -10,16 +10,6 @@ class NoteColorRenderer extends DefaultTableCellRenderer {
             boolean isSelected, boolean hasFocus,
             int row, int column) {
         Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column)
-        GuitarStringsDataModel guitarStringsDataModel = table.model as GuitarStringsDataModel
-//        String noteName = guitarStringsDataModel.getValueAt(row, column)
-//        guitarStringsDataModel.getObject()
-        println "row: $row, column: $column"
-        if(value==null){
-            println "value==null"
-        } else {
-            if(!value instanceof Note)
-                println "value !instance of Note"
-        }
         if (column == 0) {
             cell.setForeground(Color.RED)
         } else {
