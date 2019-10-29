@@ -2,7 +2,6 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.WindowConstants
 import java.awt.BorderLayout
-import java.util.function.Predicate
 
 class Main {
     static void main(String[] args) {

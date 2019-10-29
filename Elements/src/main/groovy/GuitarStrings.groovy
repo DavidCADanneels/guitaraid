@@ -9,17 +9,17 @@ class GuitarStrings {
         def G = new GuitarString(name: 'G', notes: ScaledNotes.scaledNotes.subList(15, 38))
         def B = new GuitarString(name: 'B', notes: ScaledNotes.scaledNotes.subList(19, 42))
         def highE = new GuitarString(name: 'E-high', notes: ScaledNotes.scaledNotes.subList(24, 47))
-        guitarStrings.put('E-low', lowE)
-        guitarStrings.put('A', A)
-        guitarStrings.put('D', D)
-        guitarStrings.put('G', G)
-        guitarStrings.put('B', B)
-        guitarStrings.put('E-high', highE)
-        ordenedStrings.add(highE)
-        ordenedStrings.add(B)
-        ordenedStrings.add(G)
-        ordenedStrings.add(D)
-        ordenedStrings.add(A)
-        ordenedStrings.add(lowE)
+        guitarStrings.put 'E-low', lowE
+        guitarStrings.put 'A', A
+        guitarStrings.put 'D', D
+        guitarStrings.put 'G', G
+        guitarStrings.put 'B', B
+        guitarStrings.put 'E-high', highE
+        ordenedStrings.add highE
+        ordenedStrings.add B
+        ordenedStrings.add G
+        ordenedStrings.add D
+        ordenedStrings.add A
+        ordenedStrings.add lowE
     }
 }

@@ -18,9 +18,9 @@ class FilterPanel extends JPanel implements ActionListener{
         group.add full
         add all
         add full
-        all.addActionListener(this)
-        full.addActionListener(this)
-        all.setSelected(true)
+        all.addActionListener this
+        full.addActionListener this
+        all.setSelected true
     }
 
     static Predicate<ScaledNote> fullScaledTone = { !it.name.contains('#') }
