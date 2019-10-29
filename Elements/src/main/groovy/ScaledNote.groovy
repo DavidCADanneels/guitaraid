@@ -1,4 +1,4 @@
-class ScaledNote {
+class ScaledNote extends Note{
     Note note
     Integer octave
     String getName(){

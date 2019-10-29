@@ -15,7 +15,8 @@ class GuitarStringsPanel extends JPanel {
         dataModel = new GuitarStringsDataModel()
         table = new JTable(dataModel)
         table.setBorder(new LineBorder(Color.BLACK))
-        table.setPreferredScrollableViewportSize(new Dimension(1500, 96));
+        table.setPreferredScrollableViewportSize(new Dimension(1200, 96));
+        table.setDefaultRenderer(Note.class, new NoteColorRenderer())
         JScrollPane scrollPane = new JScrollPane(table)
         add scrollPane
     }

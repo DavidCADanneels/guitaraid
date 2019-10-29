@@ -13,13 +13,13 @@ class GuitarStringsDataModel extends AbstractTableModel {
         return 23
     }
 
-    String getValueAt(int rowIndex, int columnIndex) {
+    Note getValueAt(int rowIndex, int columnIndex) {
         GuitarString guitarString = GuitarStrings.ordenedStrings.get(rowIndex)
         ScaledNote scaledNote = guitarString.notes.get(columnIndex)
         Note note = scaledNote.note
         if(filter!=null && !filter.test(note)) null
         else {
-            showOctave?scaledNote.name:note.name
+            showOctave?scaledNote:note
         }
     }
 
@@ -28,7 +28,7 @@ class GuitarStringsDataModel extends AbstractTableModel {
     }
 
     Class getColumnClass(int col) {
-        String.class
+        Note.class
     }
 
     boolean isCellEditable(int row, int col) { false }
@@ -42,4 +42,10 @@ class GuitarStringsDataModel extends AbstractTableModel {
         this.filter = filter
         fireTableDataChanged()
     }
+
+//    Node getObject(int row, int col) {
+//        if(journal==null) return null;
+//        ArrayList<Transaction> transactions = journal.getBusinessObjects();
+//        return transactions.get(row);
+//    }
 }
