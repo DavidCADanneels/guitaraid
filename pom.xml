@@ -7,5 +7,6 @@
     <modules>
         <module>Parent</module>
         <module>Elements</module>
+        <module>Application</module>
     </modules>
 </project>
