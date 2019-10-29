@@ -24,4 +24,7 @@ class GuitarStringsPanel extends JPanel {
         dataModel.setFilter filter
     }
 
+    void setShowOctave(boolean show){
+        dataModel.showOctave = show
+    }
 }

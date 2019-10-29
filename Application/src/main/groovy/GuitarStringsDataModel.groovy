@@ -3,6 +3,7 @@ import java.util.function.Predicate
 
 class GuitarStringsDataModel extends AbstractTableModel {
     Predicate<ScaledNote> filter
+    boolean showOctave = true
 
     int getRowCount() {
         return 6
@@ -12,10 +13,13 @@ class GuitarStringsDataModel extends AbstractTableModel {
         return 23
     }
 
-    ScaledNote getValueAt(int rowIndex, int columnIndex) {
+    String getValueAt(int rowIndex, int columnIndex) {
         GuitarString guitarString = GuitarStrings.ordenedStrings.get(rowIndex)
         ScaledNote scaledNote = guitarString.notes.get(columnIndex)
-        filter==null?scaledNote:filter.test(scaledNote)?scaledNote:null
+        if(filter!=null && !filter.test(scaledNote)) null
+        else {
+            showOctave?scaledNote.name:scaledNote.note.name
+        }
     }
 
     String getColumnName(int col) {
@@ -23,10 +27,15 @@ class GuitarStringsDataModel extends AbstractTableModel {
     }
 
     Class getColumnClass(int col) {
-        ScaledNote.class
+        String.class
     }
 
     boolean isCellEditable(int row, int col) { false }
+
+    void setShowOctave(boolean show){
+        showOctave = show
+        fireTableDataChanged()
+    }
 
     void setFilter(Predicate<ScaledNote> filter) {
         this.filter = filter
