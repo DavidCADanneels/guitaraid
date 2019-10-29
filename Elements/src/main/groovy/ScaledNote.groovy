@@ -4,4 +4,5 @@ class ScaledNote {
     String getName(){
         return "${note.name}${octave}"
     }
+    String toString(){ name }
 }

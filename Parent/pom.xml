@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>be.dafke</groupId>
+    <groupId>be.dafke.GuitarAid</groupId>
     <artifactId>Parent</artifactId>
     <packaging>pom</packaging>
     <version>DEV-SNAPSHOT</version>
@@ -12,8 +12,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>be.dafke</groupId>
+                <groupId>be.dafke.GuitarAid</groupId>
                 <artifactId>Elements</artifactId>
+                <version>DEV-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>be.dafke.GuitarAid</groupId>
+                <artifactId>Application</artifactId>
                 <version>DEV-SNAPSHOT</version>
             </dependency>
         </dependencies>

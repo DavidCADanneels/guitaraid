@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>Parent</artifactId>
-        <groupId>be.dafke</groupId>
+        <groupId>be.dafke.GuitarAid</groupId>
         <version>DEV-SNAPSHOT</version>
         <relativePath>../Parent/pom.xml</relativePath>
     </parent>
@@ -12,12 +12,6 @@
 
     <artifactId>Elements</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

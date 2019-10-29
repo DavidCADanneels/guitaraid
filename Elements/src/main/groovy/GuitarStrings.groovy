@@ -1,5 +1,6 @@
 class GuitarStrings {
     HashMap<String, GuitarString> guitarStrings = new HashMap<>()
+    ArrayList<GuitarString> ordenedStrings = new ArrayList<>()
 
     GuitarStrings() {
         HashMap<String, Note> notes = Notes.notes
@@ -15,5 +16,11 @@ class GuitarStrings {
         guitarStrings.put('G', G)
         guitarStrings.put('B', B)
         guitarStrings.put('E-high', highE)
+        ordenedStrings.add(highE)
+        ordenedStrings.add(B)
+        ordenedStrings.add(G)
+        ordenedStrings.add(D)
+        ordenedStrings.add(A)
+        ordenedStrings.add(lowE)
     }
 }
