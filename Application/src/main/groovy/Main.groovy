@@ -2,6 +2,7 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import javax.swing.WindowConstants
 import java.awt.BorderLayout
+import java.util.function.Predicate
 
 class Main {
     static void main(String[] args) {
@@ -13,15 +14,11 @@ class Main {
     }
 
     static JPanel createContentPanel(){
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add new GuitarStringsPanel(), BorderLayout.NORTH
-        panel.add createFilterPanel(), BorderLayout.CENTER
-        panel
-    }
-
-    static JPanel createFilterPanel(){
-        JPanel panel = new JPanel()
-
+        JPanel panel = new JPanel(new BorderLayout())
+        def guitarStringsPanel = new GuitarStringsPanel()
+        panel.add guitarStringsPanel, BorderLayout.NORTH
+        def filterPanel = new FilterPanel(guitarStringsPanel)
+        panel.add filterPanel, BorderLayout.CENTER
         panel
     }
 }
