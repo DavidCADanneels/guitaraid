@@ -32,9 +32,8 @@ class GuitarStringsTest {
         testString('E-high', 'E', 4, 'D', 6)
     }
 
-    void testString(String name, String startNote, Integer startOctave, String endNote, Integer endOctave){
-        def strings = new GuitarStrings()
-        GuitarString guitarString = strings.guitarStrings.get(name)
+    static void testString(String name, String startNote, Integer startOctave, String endNote, Integer endOctave){
+        GuitarString guitarString = GuitarStrings.guitarStrings.get(name)
         List<ScaledNote> notes = guitarString.notes
         assert notes.size() == 23
 

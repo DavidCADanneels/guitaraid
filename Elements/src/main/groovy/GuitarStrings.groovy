@@ -1,9 +1,8 @@
 class GuitarStrings {
-    HashMap<String, GuitarString> guitarStrings = new HashMap<>()
-    ArrayList<GuitarString> ordenedStrings = new ArrayList<>()
+    static HashMap<String, GuitarString> guitarStrings = new HashMap<>()
+    static ArrayList<GuitarString> ordenedStrings = new ArrayList<>()
 
-    GuitarStrings() {
-        HashMap<String, Note> notes = Notes.notes
+    static {
         def lowE = new GuitarString(name: 'E-low', notes: ScaledNotes.scaledNotes.subList(0, 23))
         def A = new GuitarString(name: 'A', notes: ScaledNotes.scaledNotes.subList(5, 28))
         def D = new GuitarString(name: 'D', notes: ScaledNotes.scaledNotes.subList(10, 33))
