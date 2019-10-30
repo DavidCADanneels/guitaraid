@@ -14,7 +14,7 @@ class FilterPanel extends JPanel implements ActionListener{
     GuitarStringsPanel guitarStringsPanel
     JRadioButton all, full, selectedNotes, selectedScaledNotes
     HashMap<Note, JCheckBox> notesCheckBoxes = new HashMap<>()
-    HashMap<ScaledNote, JCheckBox> scaledNoteCheckBoxes = new HashMap<>()
+    HashMap<ScaledNote, JCheckBox> scaledNotesCheckBoxes = new HashMap<>()
 
     FilterPanel(GuitarStringsPanel guitarStringsPanel) {
         this.guitarStringsPanel = guitarStringsPanel
@@ -84,7 +84,7 @@ class FilterPanel extends JPanel implements ActionListener{
                 ScaledNotes.scaledNotes.indexOf()
                 ScaledNote scaledNote = ScaledNotes.scaledNotesMap.get(name)
                 JCheckBox checkBox = new JCheckBox(name)
-                scaledNoteCheckBoxes.put(scaledNote, checkBox)
+                scaledNotesCheckBoxes.put(scaledNote, checkBox)
                 checkBox.selected = true
                 checkBox.enabled = false
                 checkBox.addActionListener this
@@ -121,7 +121,7 @@ class FilterPanel extends JPanel implements ActionListener{
                 checkBox.enabled = false
                 checkBox.selected = true
             }
-            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
+            scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
                 checkbox.enabled = false
                 checkbox.selected = true
             }
@@ -131,7 +131,7 @@ class FilterPanel extends JPanel implements ActionListener{
                 checkBox.enabled = false
                 checkBox.selected = fullScaledTone.test(note)
             }
-            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
+            scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkbox ->
                 checkbox.enabled = false
                 checkbox.selected = fullScaledTone.test(scaledNote.note)
             }
@@ -140,29 +140,49 @@ class FilterPanel extends JPanel implements ActionListener{
             notesCheckBoxes.each { Note note, JCheckBox checkBox ->
                 checkBox.enabled = true
             }
-            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+            scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
                 checkBox.enabled = false
             }
         } else if (e.source == selectedScaledNotes){
-            scaledNoteCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+            scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
                 checkBox.enabled = true
             }
             notesCheckBoxes.each { Note note, JCheckBox checkBox ->
                 checkBox.enabled = false
             }
         } else {
-            ArrayList<Note> notes = new ArrayList<>()
-            notesCheckBoxes.each { Note note, JCheckBox checkBox ->
-                if(checkBox.selected){
-                    notes.add note
+            if(selectedNotes.selected) {
+                ArrayList<Note> notes = new ArrayList<>()
+                notesCheckBoxes.each { Note note, JCheckBox checkBox ->
+                    if (checkBox.selected) {
+                        notes.add note
+                    }
                 }
-            }
-            def filter = new Predicate<Note>(){
-                boolean test(Note note) {
-                    notes.contains(note)
+                Predicate<ScaledNote> filter = new Predicate<ScaledNote>() {
+                    boolean test(ScaledNote scaledNote) {
+                        notes.contains(scaledNote.note)
+                    }
                 }
+                guitarStringsPanel.filter = filter
+                scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+                    checkBox.removeActionListener this
+                    checkBox.selected = filter.test(scaledNote)
+                    checkBox.addActionListener this
+                }
+            } else if (selectedScaledNotes.selected){
+                ArrayList<ScaledNote> scaledNotes = new ArrayList<>()
+                scaledNotesCheckBoxes.each { ScaledNote scaledNote, JCheckBox checkBox ->
+                    if (checkBox.selected) {
+                        scaledNotes.add scaledNote
+                    }
+                }
+                Predicate<ScaledNote> filter = new Predicate<ScaledNote>() {
+                    boolean test(ScaledNote scaledNote) {
+                        scaledNotes.contains(scaledNote)
+                    }
+                }
+                guitarStringsPanel.filter = filter
             }
-            guitarStringsPanel.filter = filter
-        }
+       }
     }
 }

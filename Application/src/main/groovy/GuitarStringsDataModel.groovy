@@ -2,7 +2,7 @@ import javax.swing.table.AbstractTableModel
 import java.util.function.Predicate
 
 class GuitarStringsDataModel extends AbstractTableModel {
-    Predicate<Note> filter
+    Predicate<ScaledNote> filter
     boolean showOctave = true
 
     int getRowCount() {
@@ -16,10 +16,9 @@ class GuitarStringsDataModel extends AbstractTableModel {
     Note getValueAt(int rowIndex, int columnIndex) {
         GuitarString guitarString = GuitarStrings.ordenedStrings.get(rowIndex)
         ScaledNote scaledNote = guitarString.notes.get(columnIndex)
-        Note note = scaledNote.note
-        if(filter!=null && !filter.test(note)) null
+        if(filter!=null && !filter.test(scaledNote)) null
         else {
-            showOctave?scaledNote:note
+            showOctave?scaledNote:scaledNote.note
         }
     }
 
