@@ -1,3 +1,5 @@
+package be.dafke.GuitarAid.Elements
+
 class GuitarStrings {
     static HashMap<String, GuitarString> guitarStrings = new HashMap<>()
     static ArrayList<GuitarString> ordenedStrings = new ArrayList<>()

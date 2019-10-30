@@ -1,3 +1,7 @@
+package be.dafke.GuitarAid.Application
+
+import be.dafke.GuitarAid.Elements.Note
+
 import javax.swing.JTable
 import javax.swing.table.DefaultTableCellRenderer
 import java.awt.Color

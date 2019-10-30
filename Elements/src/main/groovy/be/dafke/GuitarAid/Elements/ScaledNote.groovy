@@ -1,3 +1,5 @@
+package be.dafke.GuitarAid.Elements
+
 class ScaledNote extends Note{
     Note note
     Integer octave

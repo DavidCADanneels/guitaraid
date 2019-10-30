@@ -1,3 +1,5 @@
+import be.dafke.GuitarAid.Elements.Note
+import be.dafke.GuitarAid.Elements.ScaledNote
 import org.junit.Test;
 
 public class ScaledNoteTest {

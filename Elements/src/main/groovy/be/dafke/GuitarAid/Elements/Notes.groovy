@@ -1,3 +1,5 @@
+package be.dafke.GuitarAid.Elements
+
 class Notes {
     static HashMap<String, Note> notes = new HashMap<>()
     static noteNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']

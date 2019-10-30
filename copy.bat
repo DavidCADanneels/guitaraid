@@ -1,0 +1,1 @@
+copy Application\target\Application-DEV-SNAPSHOT-jar-with-dependencies.jar GuitarAid-latest.jar

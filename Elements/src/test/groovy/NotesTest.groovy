@@ -1,3 +1,5 @@
+import be.dafke.GuitarAid.Elements.Note
+import be.dafke.GuitarAid.Elements.Notes
 import org.junit.Test;
 
 class NotesTest {

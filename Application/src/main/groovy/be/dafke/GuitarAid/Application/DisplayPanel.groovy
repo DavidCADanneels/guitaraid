@@ -1,3 +1,5 @@
+package be.dafke.GuitarAid.Application
+
 import javax.swing.JCheckBox
 import javax.swing.JPanel
 import javax.swing.border.TitledBorder

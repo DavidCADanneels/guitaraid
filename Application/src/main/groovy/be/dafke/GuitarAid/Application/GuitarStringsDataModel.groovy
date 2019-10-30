@@ -1,3 +1,10 @@
+package be.dafke.GuitarAid.Application
+
+import be.dafke.GuitarAid.Elements.GuitarString
+import be.dafke.GuitarAid.Elements.GuitarStrings
+import be.dafke.GuitarAid.Elements.Note
+import be.dafke.GuitarAid.Elements.ScaledNote
+
 import javax.swing.table.AbstractTableModel
 import java.util.function.Predicate
 

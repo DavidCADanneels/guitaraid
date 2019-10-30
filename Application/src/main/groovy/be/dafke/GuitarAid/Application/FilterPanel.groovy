@@ -1,3 +1,10 @@
+package be.dafke.GuitarAid.Application
+
+import be.dafke.GuitarAid.Elements.Note
+import be.dafke.GuitarAid.Elements.Notes
+import be.dafke.GuitarAid.Elements.ScaledNote
+import be.dafke.GuitarAid.Elements.ScaledNotes
+
 import javax.swing.BoxLayout
 import javax.swing.ButtonGroup
 import javax.swing.JCheckBox
@@ -29,7 +36,7 @@ class FilterPanel extends JPanel implements ActionListener{
         all = new JRadioButton('All notes')
         full = new JRadioButton('Full notes only')
         selectedNotes = new JRadioButton('Selected notes')
-        selectedScaledNotes = new JRadioButton('Selected Scaled Notes')
+        selectedScaledNotes = new JRadioButton('Selected Scaled be.dafke.GuitarAid.Elements.Notes')
 
         group.add all
         group.add full
@@ -50,7 +57,7 @@ class FilterPanel extends JPanel implements ActionListener{
         add optionsPanel, BorderLayout.WEST
 
         JPanel selectedNotes = new JPanel(new GridLayout(2,0))
-        selectedNotes.setBorder(new TitledBorder('Displayed Notes:'))
+        selectedNotes.setBorder(new TitledBorder('Displayed be.dafke.GuitarAid.Elements.Notes:'))
         ['C','D','E','F','G','A','B','C#','D#', null,'F#','G#','A#',null].each { String name ->
             if(name == null){
                 selectedNotes.add new JPanel()
@@ -66,7 +73,7 @@ class FilterPanel extends JPanel implements ActionListener{
         }
 
         JPanel selectedScaledNotes = new JPanel(new GridLayout(0, 7))
-        selectedScaledNotes.setBorder(new TitledBorder('Displayed Scaled Notes:'))
+        selectedScaledNotes.setBorder(new TitledBorder('Displayed Scaled be.dafke.GuitarAid.Elements.Notes:'))
         [
                 null, null, 'E2', 'F2','G2', 'A2', 'B2',
                 null, null, null, 'F#2', 'G#2', 'A#2', null,

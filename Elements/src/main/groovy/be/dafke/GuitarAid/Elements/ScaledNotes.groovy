@@ -1,3 +1,5 @@
+package be.dafke.GuitarAid.Elements
+
 class ScaledNotes {
     static ArrayList<ScaledNote> scaledNotes = new ArrayList<>()
     static HashMap<String, ScaledNote> scaledNotesMap = new HashMap<>()

@@ -1,3 +1,7 @@
+package be.dafke.GuitarAid.Application
+
+import be.dafke.GuitarAid.Elements.Note
+
 import javax.swing.JScrollPane
 import java.awt.Color
 

@@ -1,3 +1,7 @@
+import be.dafke.GuitarAid.Elements.GuitarString
+import be.dafke.GuitarAid.Elements.GuitarStrings
+import be.dafke.GuitarAid.Elements.Note
+import be.dafke.GuitarAid.Elements.ScaledNote
 import org.junit.Test
 
 class GuitarStringsTest {
